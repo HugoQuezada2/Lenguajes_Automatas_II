@@ -1,0 +1,43 @@
+package codigo;
+import java_cup.runtime.Symbol;
+parser code
+{:
+ private Symbol s;
+ 
+ public void syntax_error(Symbol s){
+ this.s = s;
+ }
+ public Symbol getS(){
+ return this.s;
+}
+:};
+
+terminal Linea, entonces, ademas, mientrasque, para, entera, caracter, flotante,
+doble, boleana, Main,
+asignaA, Suma, Resta, Multiplicacion, Division, 
+igualA, menorQue, mayorQue, mayorOigualA, menorOigualA,
+desplazaIzquierda, desplazaDerecha, diferenteA, tambien,
+comentario, modula, obien, incremento, decremento,
+comilladoSimple, comilladoDobleA, dosPuntos, coma,puntoYcoma,
+parentesisA,parentesisB, corcheteA,corcheteB, llaveA, llaveB,
+Identificador,Numero, ERROR;
+
+non terminal INICIO, SENTENCIAint, SENTENCIAfor, SENTENCIAwhile;
+
+start with INICIO;
+INICIO ::= 
+            SENTENCIAint |
+            SENTENCIAfor |
+            SENTENCIAwhile |
+;
+SENTENCIAint ::= 
+                entera parentesisA Identificador asignaA Numero parentesisB puntoYcoma 
+;
+
+SENTENCIAfor ::= 
+                para parentesisA Identificador asignaA Numero parentesisB puntoYcoma
+                
+;
+SENTENCIAwhile ::= 
+               mientrasque parentesisA Identificador asignaA Numero parentesisB puntoYcoma
+;
